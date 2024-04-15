@@ -59,10 +59,6 @@ const PostSubmit = (props) => {
   event.preventDefault();
   const userId = localStorage.getItem("user_id");
   const token = localStorage.getItem("token");
-  if (selectedFile.length === 0) {
-    alert("Please select at least one file to upload.");
-    return;
-  }
   const formData = new FormData();
   for (let i = 0; i < selectedFile.length; i++) {
     formData.append("files", selectedFile[i]);
