@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as Toast from "../components/Toast";
 const API_BASE = process.env.REACT_APP_API_KEY;
 const token = localStorage.getItem("token");
@@ -10,7 +10,6 @@ const DetailContribution = () => {
   const { contributionId } = useParams();
   const [comment, setComment] = useState("");
   const [listCmt, setListCmt] = useState([]);
-  const [articleId, setArticleId] = useState(contributionId);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const handleSubmitComment = async () => {
@@ -19,7 +18,7 @@ const DetailContribution = () => {
       await axios.post(
         `${API_BASE}/comment/create`,
         {
-          articleId: articleId,
+          articleId: contributionId,
           userId: user,
           commentContent: comment,
         },
@@ -45,7 +44,7 @@ const DetailContribution = () => {
       try {
         const res = await axios.post(
           `${API_BASE}/comment/list-by-artical-id`,
-          { articleId },
+          { contributionId },
           {
             headers: {
               Authorization: `Bearer ${token}`,
