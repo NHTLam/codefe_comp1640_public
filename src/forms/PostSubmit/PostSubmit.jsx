@@ -107,7 +107,7 @@ const PostSubmit = (props) => {
       Toast.toastErorr("Submit failed");
     }
   } catch (error) {
-    Toast.toastErorr("Submit Error");
+    Toast.toastErorr("Can not Submit");
     setIsLoading(false);
     console.error("Error:", error);
   }

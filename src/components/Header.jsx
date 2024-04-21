@@ -134,17 +134,19 @@ const Header = () => {
                       </Link>
                     </Dropdown.Item>
                     {AllowAccessAdminPage ? (
+                      <>
                       <Dropdown.Item>
                         <Link to={{ pathname: `${ValidAccessUrl}` }}>Admin Home</Link>
                       </Dropdown.Item>
+                      <Dropdown.Item>
+                        <Link to={"/history"}>
+                          <div>Post History</div>
+                        </Link>
+                      </Dropdown.Item>
+                      </>
                     ) : (
                       <></>
                     )}
-                    <Dropdown.Item>
-                      <Link to={"/history"}>
-                        <div>Post History</div>
-                      </Link>
-                    </Dropdown.Item>
                     <Dropdown.Item onClick={handleClickLogOut}>
                       Logout
                     </Dropdown.Item>

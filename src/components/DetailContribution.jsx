@@ -13,9 +13,10 @@ const DetailContribution = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const handleSubmitComment = async () => {
+    debugger;
     const user = localStorage.getItem("user_id");
     try {
-      await axios.post(
+      const result = await axios.post(
         `${API_BASE}/comment/create`,
         {
           articleId: contributionId,
@@ -33,8 +34,13 @@ const DetailContribution = () => {
       }, 1);
       setComment("");
     } catch (error) {
-      console.error("Error creating comment:", error); // Handle network or other errors
-      Toast.toastErorr("Comment contains inappropriate words");
+      if (error.response.status !== 401 && error.response.status !== 403){
+        console.error("Error creating comment:", error); // Handle network or other errors
+        Toast.toastErorr("Comment contains inappropriate words");
+      }
+      else{
+        Toast.toastErorr("You do not have permission to perform this action");
+      }
     }
   };
 
