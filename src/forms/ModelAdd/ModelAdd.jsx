@@ -102,7 +102,7 @@ function ModelAdd() {
             <form>
 
                 <h5 className="modal-title fs-2 fw-bolder text-black mb-4" id="exampleModalLabel">
-                    Reques New Topic
+                    Request New Topic
                 </h5>
 
                 <div className="">
@@ -162,7 +162,7 @@ function ModelAdd() {
                 </div>
                 <div className="footer">
                     <div className="btn btn-success" onClick={handleNewTopic}>
-                        create new topic
+                        Create new topic
                     </div>
                 </div>
             </form >

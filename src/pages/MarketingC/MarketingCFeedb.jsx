@@ -202,7 +202,7 @@ function MarketingCFeedb(props) {
         }
       );
       if (res.status === 200) {
-        Toast.toastSuccess("apprvoed successfully");
+        Toast.toastSuccess("Approved successfully");
         setTimeout(() => {
           navigate("/mk-manage-topic");
         }, 1000);

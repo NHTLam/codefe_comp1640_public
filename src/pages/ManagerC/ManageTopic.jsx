@@ -96,7 +96,7 @@ function ManageTopic() {
                   <td className="topic_enddate">{item.endDate}</td>
                   <td className="topic_description">{item.userId}</td>
                   <td className="topic_description">{item.departmentId}</td>
-                  {item.isApproved === true ? <td> <p className="top_status btn btn-success">Approved</p></td> : <td> <p className="top_status btn btn-warning">Pendding</p></td>}
+                  {item.isApproved === true ? <td> <p className="top_status btn btn-success">Approved</p></td> : <td> <p className="top_status btn btn-warning">Pending</p></td>}
                   <td className="topic_action d-flex">
                     {listPath.includes('/feedback/create') && listPath.includes('/dashboard/get-data') ? ( 
                     <div
