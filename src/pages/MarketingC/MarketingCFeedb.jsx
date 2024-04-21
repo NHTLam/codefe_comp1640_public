@@ -65,7 +65,7 @@ function MarketingCFeedb(props) {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .post(`${API_BASE}/article/GetUpLoadedFiles?articleId=${id}`, null, {
+      .post(`https://5197-14-232-233-53.ngrok-free.app/article/GetUpLoadedFiles?articleId=${id}`, null, {
         headers: {
           "ngrok-skip-browser-warning": true,
           "Content-Type": "application/json",
@@ -216,7 +216,7 @@ function MarketingCFeedb(props) {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        `${API_BASE}/article/GetFile?articleId=${articleId}`,
+        `https://5197-14-232-233-53.ngrok-free.app/article/GetFile?articleId=${articleId}`,
         null,
         {
           headers: {
@@ -250,7 +250,7 @@ function MarketingCFeedb(props) {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
-        `${API_BASE}/article/GetFile?articleId=${articleId}`,
+        `https://5197-14-232-233-53.ngrok-free.app/article/GetFile?articleId=${articleId}`,
         null,
         {
           responseType: "blob",

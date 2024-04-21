@@ -83,7 +83,7 @@ const PostSubmit = (props) => {
       const articleId = res.data.data.articleId;
       formData.append("articleId", articleId);
       await axios.post(
-        `${API_BASE}/article/upload-file?articleId=${articleId}`,
+        `https://5197-14-232-233-53.ngrok-free.app/article/upload-file?articleId=${articleId}`,
         formData,
         {
           headers: {
