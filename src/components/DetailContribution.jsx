@@ -4,7 +4,6 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Toast from "../components/Toast";
 const API_BASE = process.env.REACT_APP_API_KEY;
-const token = localStorage.getItem("token");
 
 const DetailContribution = () => {
   const { contributionId } = useParams();
@@ -13,8 +12,8 @@ const DetailContribution = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const handleSubmitComment = async () => {
-    debugger;
     const user = localStorage.getItem("user_id");
+    const token = localStorage.getItem("token");
     try {
       const result = await axios.post(
         `${API_BASE}/comment/create`,
@@ -50,7 +49,7 @@ const DetailContribution = () => {
       try {
         const res = await axios.post(
           `${API_BASE}/comment/list-by-artical-id`,
-          { contributionId },
+          { articleId: contributionId, },
           {
             headers: {
               Authorization: `Bearer ${token}`,
