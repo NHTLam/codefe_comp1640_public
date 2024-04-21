@@ -15,6 +15,8 @@ const Home = () => {
     const [contributions, setContributions] = useState([]);
     const [data,setData] = useState([]);
     const [departmentData, setDepartmentData] = useState(Department.DepartmentData());
+    const [searchKey, setSearchKey] = useState("");
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         axios.get(`${API_BASE}/article/GetAllArticle`, {
@@ -28,8 +30,23 @@ const Home = () => {
             .catch(err => console.log(err))
     }, [])
     useEffect(()=>{
-    setContributions(data.filter(data => (data.isApproved === true && data.isTopic === false)))
-    },[data])
+        const newData = data.filter(data => (data.isApproved === true && data.isTopic === false));
+        if (
+            searchKey !== null &&
+            searchKey !== "" &&
+            searchKey !== undefined
+          ) {
+            const datas =
+            newData?.filter(
+                (x) => x.content?.toLowerCase().includes(searchKey.toLowerCase()),
+              ) ?? [];
+
+              setContributions(datas);
+          } else {
+            
+            setContributions(newData)
+          }
+    },[data, searchKey])
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
@@ -100,8 +117,8 @@ const Home = () => {
                         <h1 className=''>Top contribution</h1>
                     </div>
                     <form className="d-flex me-2 ms-5 w-100">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-secondary border border-primary" type="submit">Search</button>
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={(e) => setSearchKey(e.target.value)} />
+                        <button className="btn btn-outline-secondary border border-primary" type="button" >Search</button>
                     </form>
                 </div>
             </nav>
