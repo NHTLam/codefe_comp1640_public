@@ -57,7 +57,7 @@ const ManagerRole = () => {
       });
 
       console.log("Delete success");
-      setRoles(Roles.filter((Role) => Role.userId !== userId));
+      setRoles(Roles.filter((Role) => Role.roleId !== roleId));
       // navigate("/");
     } catch (err) {
       console.log("Delete Role failed! " + err);
