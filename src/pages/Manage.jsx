@@ -8,6 +8,9 @@ const API_BASE = process.env.REACT_APP_API_KEY;
 
 const Manage = () => {
   const navigate = useNavigate();
+  const [totalAccount, setTotalAccount] = useState("");
+  const [totalRole, setTotalRole] = useState("");
+  const [totalTopic, setTotalTopic] = useState("");
   const [listDashBoard, setlistDashBoard] = useState({
     pieChartSimplifys: [],
     barChartSimplifys: [],
@@ -66,6 +69,62 @@ const Manage = () => {
     dashBoard();
   }, []);
 
+  // Total Account
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const totalAccount = async () => {
+      try {
+        const res = await axios.post(`${API_BASE}/app-user/list`, null, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setTotalAccount(res.data.length);
+      } catch (err) {
+        console.log("Failed to list account! " + err);
+      }
+    };
+    totalAccount();
+  }, []);
+
+  // Total Role
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const totalRole = async () => {
+      try {
+        const res = await axios.post(`${API_BASE}/role/list-role`, null, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setTotalRole(res.data.length);
+      } catch (err) {
+        console.log("Failed to list account! " + err);
+      }
+    };
+    totalRole();
+  }, []);
+
+  // Total Topic
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const totalTopic = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/article/GetAllArticle`, {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const topic = res.data.data.filter((data) => data.isTopic === true);
+        setTotalTopic(topic.length);
+      } catch (err) {
+        console.log("Failed to list account! " + err);
+      }
+    };
+    totalTopic();
+  }, []);
+
   return (
     <div className="container">
       <h2 className="fw-bold">Dashboard</h2>
@@ -77,7 +136,7 @@ const Manage = () => {
               <div className="card-body py-4">
                 <h5 className="mb-2 fw-bold">Total Account</h5>
                 <div className="d-flex">
-                  <p className="mb-2 fw-bold">50</p>
+                  <p className="mb-2 fw-bold">{totalAccount}</p>
                   <i class="bi bi-person ms-2"></i>
                 </div>
               </div>
@@ -88,7 +147,7 @@ const Manage = () => {
               <div className="card-body py-4">
                 <h5 className="mb-2 fw-bold">Total topic</h5>
                 <div className="d-flex">
-                  <p className="mb-2 fw-bold">50</p>
+                  <p className="mb-2 fw-bold">{totalTopic}</p>
                   <i class="bi bi-card-text ms-2"></i>
                 </div>
               </div>
@@ -99,7 +158,7 @@ const Manage = () => {
               <div className="card-body py-4">
                 <h5 className="mb-2 fw-bold">Total Role</h5>
                 <div className="d-flex">
-                  <p className="mb-2 fw-bold">50</p>
+                  <p className="mb-2 fw-bold">{totalRole}</p>
                   <i class="bi bi-person-lines-fill ms-2"></i>
                 </div>
               </div>
