@@ -55,7 +55,7 @@ function ManageTopic() {
           Authorization: `Bearer ${token}`
         }
       }).then(data => {
-        Toast.toastSuccess("apprvoed successfully")
+        Toast.toastSuccess("Approved successfully")
         setTimeout(()=>{
           window.location.reload()
         },3000)

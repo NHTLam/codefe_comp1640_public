@@ -58,7 +58,7 @@ const ViewHistory = () => {
           setTopicData(data.data.data)
         })
         axios
-      .post(`https://bea5-14-231-219-38.ngrok-free.app/article/GetUpLoadedFiles?articleId=${res.data.data?.articleId}`, null, {
+      .post(`https://5d6b-14-231-219-38.ngrok-free.app/article/GetUpLoadedFiles?articleId=${res.data.data?.articleId}`, null, {
         headers: {
           "ngrok-skip-browser-warning": true,
           "Content-Type": "application/json",
