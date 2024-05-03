@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 const API_BASE = process.env.REACT_APP_API_KEY;
 function Contribution({ currentItems, link }) {
     const navigate = useNavigate();
@@ -55,8 +56,8 @@ function Contribution({ currentItems, link }) {
                                             <div class="card-body">
                                                 <h5 class="card-title">{item.title}</h5>
                                                 <p class="card-text">{item.content}</p>
-                                                <p>{item?.startDate}</p>
-                                                <p>{item?.endDate}</p>
+                                                <p>{moment(item?.startDate).format('MMMM Do YYYY, h:mm:ss a')}</p>
+                                                <p>{moment(item?.endDate).format('MMMM Do YYYY, h:mm:ss a')}</p>
                                                 <p class="card-text" onClick={()=>CheckArticle(item)}>
                                                     <Link to={`${link}/${item.articleId}`} class="btn btn-light">See moree</Link>
                                                 </p>

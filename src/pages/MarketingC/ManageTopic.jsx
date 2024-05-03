@@ -6,6 +6,7 @@ import ModelAdd from "../../forms/ModelAdd/ModelAdd";
 import ModelEdit from "../../forms/ModelEdit/ModelEdit";
 import Pagination from "../../components/Pagination";
 import TopicDetail from "./TopicDetail";
+import moment from "moment";
 const API_BASE = process.env.REACT_APP_API_KEY;
 
 function ManageTopic() {
@@ -113,9 +114,9 @@ function ManageTopic() {
             <div class="card-body">
               <h5 class="card-title">{item.content}</h5>
     
-              <p class="card-text">Start Date: {item.startDate?.toLocaleString()}</p>
+              <p class="card-text">Start Date: {moment(item?.startDate).format('MMMM Do YYYY, h:mm:ss a')}</p>
 
-              <p class="card-text">End Date: {item.endDate?.toLocaleString()}</p>
+              <p class="card-text">End Date: {moment(item?.endDate).format('MMMM Do YYYY, h:mm:ss a')}</p>
               <p class="card-text">Contribution: 30</p>
               <a href="!#" class="btn btn-primary" onClick={()=>setTopicInfor(item)}
               data-bs-toggle="modal"

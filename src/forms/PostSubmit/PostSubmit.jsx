@@ -63,6 +63,7 @@ const PostSubmit = (props) => {
   for (let i = 0; i < selectedFile.length; i++) {
     formData.append("files", selectedFile[i]);
   }
+  console.log("end: ", departmentId.endDate, "curent", new Date());
   try {
     setIsLoading(true);
     const res = await axios.post(

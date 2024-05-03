@@ -1,4 +1,5 @@
 import React from "react";
+import moment from 'moment'
 
 function PostInfor({ dataTopic }) {
   return (
@@ -21,11 +22,11 @@ function PostInfor({ dataTopic }) {
           </tr>
           <tr>
             <th scope="row">Start Date</th>
-            <td>{dataTopic?.startDate}</td>
+            <td>{moment(dataTopic?.startDate).format('MMMM Do YYYY, h:mm:ss a')}</td>
           </tr>
           <tr>
             <th scope="row">End Date</th>
-            <td>{dataTopic?.endDate}</td>
+            <td>{moment(dataTopic?.endDate).format('MMMM Do YYYY, h:mm:ss a')}</td>
           </tr>
           <tr>
             <th scope="row">Requirement</th>
