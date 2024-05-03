@@ -49,7 +49,7 @@ function StEditPost() {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        axios.post(`https://5d6b-14-231-219-38.ngrok-free.app/article/GetUpLoadedFiles?articleId=${id}`, null, {
+        axios.post(`https://2fb8-123-24-205-138.ngrok-free.app/article/GetUpLoadedFiles?articleId=${id}`, null, {
             headers: {
                 'ngrok-skip-browser-warning': 'true',
                 Authorization: `Bearer ${token}`
